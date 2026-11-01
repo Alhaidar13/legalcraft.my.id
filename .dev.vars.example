@@ -1,0 +1,10 @@
+# Salin menjadi .dev.vars untuk development lokal (JANGAN di-commit)
+# Supabase Dashboard -> Project Settings -> API
+SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOi...service_role_key...
+# Secret bebas (string acak panjang) untuk webhook mutasi rekening
+WEBHOOK_SECRET=ganti-dengan-string-acak-panjang
+# true = tampilkan tombol simulasi pembayaran (testing). Set false di produksi.
+PAYMENT_SIMULATOR=true
+# Opsional: Google OAuth Client ID untuk "Masuk dengan Google"
+GOOGLE_CLIENT_ID=
