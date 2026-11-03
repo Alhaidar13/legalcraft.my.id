@@ -13,7 +13,7 @@ const PBKDF2_ITER = 100000
 
 async function pbkdf2(password: string, salt: Uint8Array, iterations: number) {
   const key = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveBits'])
-  return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations }, key, 256)
+  return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: new Uint8Array(salt), iterations }, key, 256)
 }
 
 /** Format: pbkdf2$<iter>$<saltHex>$<hashHex> */

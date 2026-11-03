@@ -48,7 +48,7 @@
   const fmtTime = (ms) => new Date(ms).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).replace(/\./g, ':');
 
   const params = new URLSearchParams(location.search);
-  const state = { order: null, clockSkew: 0, timerId: null, waitTimerId: null, pollId: null, pollEvery: 0, simulator: false, successShown: false, failedShown: false };
+  const state = { order: null, clockSkew: 0, timerId: null, waitTimerId: null, pollId: null, pollEvery: 0, successShown: false, failedShown: false };
 
 
   /* ---------- Ringkasan ---------- */

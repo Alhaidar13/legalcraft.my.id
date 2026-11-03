@@ -20,7 +20,6 @@ konsultasi WhatsApp, pembayaran BSI / GoPay dengan kode unik + verifikasi otomat
      npx wrangler pages secret put SUPABASE_URL --project-name <nama-project>
      npx wrangler pages secret put SUPABASE_SERVICE_ROLE_KEY --project-name <nama-project>
      npx wrangler pages secret put WEBHOOK_SECRET --project-name <nama-project>
-     npx wrangler pages secret put PAYMENT_SIMULATOR --project-name <nama-project>   # isi: false
      npx wrangler pages secret put GOOGLE_CLIENT_ID --project-name <nama-project>    # opsional
      ```
 
@@ -34,7 +33,6 @@ konsultasi WhatsApp, pembayaran BSI / GoPay dengan kode unik + verifikasi otomat
 | `SUPABASE_URL` | ✅ | contoh `https://abcd1234.supabase.co` |
 | `SUPABASE_SERVICE_ROLE_KEY` | ✅ | service role key (rahasia) |
 | `WEBHOOK_SECRET` | ✅ untuk webhook | string acak panjang untuk `/api/webhooks/mutasi` |
-| `PAYMENT_SIMULATOR` | – | `true` = aktifkan endpoint simulasi (hanya untuk testing via API, tidak ada tombol di UI). Default `false`. |
 | `GOOGLE_CLIENT_ID` | – | aktifkan tombol "Masuk dengan Google" |
 
 ## Struktur data (Supabase)
@@ -61,11 +59,10 @@ Fungsi SQL:
 | `/profil` (`#profil` / `#pesanan`) | halaman profil user, tab **Profil Saya** & **Pesananku** (wajib login) |
 | `GET /api/auth/config` · `GET /api/auth/me` | konfigurasi Google & user aktif |
 | `POST /api/auth/register` · `/login` · `/google` · `/logout` | autentikasi |
-| `GET /api/payment/config` | info simulator & batas waktu |
+| `GET /api/payment/config` | info batas waktu pembayaran & verifikasi |
 | `POST /api/orders` | buat tagihan `{service, name, phone, method}` |
 | `GET /api/orders/:id` | status tagihan (dipakai polling) |
 | `POST /api/orders/:id/confirm` · `/cancel` | "Saya Sudah Bayar" / batalkan |
-| `POST /api/orders/:id/simulate-payment` · `/simulate-reject` | hanya jika `PAYMENT_SIMULATOR=true` (testing) |
 | `GET /api/me/profile` | profil user aktif (nama, email, WA, foto, metode login) |
 | `PUT /api/me/profile` | edit `{name, email, phone, avatar}` (avatar = data URL PNG/JPG/WEBP, `null` = hapus) |
 | `POST /api/me/password` | ubah kata sandi `{currentPassword, newPassword}`; sesi di perangkat lain otomatis dikeluarkan |

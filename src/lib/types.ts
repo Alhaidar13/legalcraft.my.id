@@ -9,8 +9,6 @@ export type Bindings = {
   GOOGLE_CLIENT_ID?: string
   /** Secret untuk webhook mutasi rekening /api/webhooks/mutasi */
   WEBHOOK_SECRET?: string
-  /** "true" = tampilkan tombol simulasi pembayaran (untuk testing saja) */
-  PAYMENT_SIMULATOR?: string
 }
 
 export type UserRow = {

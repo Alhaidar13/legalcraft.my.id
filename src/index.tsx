@@ -72,8 +72,6 @@ const toOrderJson = (o: OrderRow) => ({
   serverTime: Date.now()
 })
 
-const simulatorOn = (c: Context<AppEnv>) => String(c.env.PAYMENT_SIMULATOR ?? 'false').toLowerCase() === 'true'
-
 async function readJson(c: Context<AppEnv>): Promise<Record<string, any>> {
   try {
     const b = await c.req.json()
@@ -255,7 +253,7 @@ app.post('/api/auth/logout', async (c) => {
    PAYMENT / ORDERS API
    ========================================================= */
 app.get('/api/payment/config', (c) =>
-  c.json({ simulator: simulatorOn(c), paymentWindow: PAYMENT_WINDOW, verifyWindow: VERIFY_WINDOW })
+  c.json({ paymentWindow: PAYMENT_WINDOW, verifyWindow: VERIFY_WINDOW })
 )
 
 const requireUser = (c: Context<AppEnv>) => {
@@ -354,40 +352,6 @@ app.post('/api/orders/:id/cancel', async (c) => {
   if (!o) return notFoundOrder(c)
   if (!['pending', 'waiting'].includes(o.status)) return c.json(toOrderJson(o))
   const [u] = await db(c).update<OrderRow>('orders', { id: eq(o.id), status: 'in.(pending,waiting)' }, { status: 'cancelled' })
-  return c.json(toOrderJson(u || (await getOwnOrder(c, o.id, user.id))!))
-})
-
-// ---- Simulator (testing). Matikan di produksi: PAYMENT_SIMULATOR=false ----
-app.post('/api/orders/:id/simulate-payment', async (c) => {
-  if (!simulatorOn(c)) return c.json({ error: 'Not found' }, 404)
-  const user = requireUser(c)
-  if (!user) return unauth(c)
-  const o = await getOwnOrder(c, c.req.param('id'), user.id)
-  if (!o) return notFoundOrder(c)
-  if (['pending', 'waiting'].includes(o.status)) {
-    await db(c).rpc('record_mutation', {
-      p_amount: o.amount,
-      p_method: o.method,
-      p_external_id: 'SIM-' + o.id,
-      p_description: 'Simulasi dana masuk',
-      p_raw: { simulated: true }
-    })
-  }
-  return c.json(toOrderJson((await getOwnOrder(c, o.id, user.id))!))
-})
-
-app.post('/api/orders/:id/simulate-reject', async (c) => {
-  if (!simulatorOn(c)) return c.json({ error: 'Not found' }, 404)
-  const user = requireUser(c)
-  if (!user) return unauth(c)
-  const o = await getOwnOrder(c, c.req.param('id'), user.id)
-  if (!o) return notFoundOrder(c)
-  if (!['pending', 'waiting'].includes(o.status)) return c.json(toOrderJson(o))
-  const [u] = await db(c).update<OrderRow>(
-    'orders',
-    { id: eq(o.id), status: 'in.(pending,waiting)' },
-    { status: 'rejected', rejected_at: iso(Date.now()), reject_reason: 'not_received' }
-  )
   return c.json(toOrderJson(u || (await getOwnOrder(c, o.id, user.id))!))
 })
 
