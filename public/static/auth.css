@@ -113,3 +113,6 @@
   .auth-wrap { grid-template-columns: 1fr; }
   .auth-side { display: none; }
 }
+
+/* v8 — tombol tema di splash */
+.splash-top-actions { display: flex; align-items: center; gap: 10px; }

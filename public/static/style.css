@@ -600,3 +600,14 @@ body.is-guest .float-card small, body.is-guest .faq-prices strong { filter: blur
 .nav-user-ph { display: grid; place-items: center; color: #fff; background: var(--grad-btn); font-size: .85rem; }
 .nav-user-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (max-width: 560px) { .nav-user-name { display: none; } }
+
+/* =========================================================
+   v8 — Navbar: chip user → halaman profil, util
+   ========================================================= */
+a.nav-user { padding: 4px 10px 4px 4px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); transition: border-color .2s, box-shadow .2s, transform .2s; }
+a.nav-user:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+a.nav-user .nav-user-caret { font-size: .7rem; color: var(--muted); }
+body.is-member #nav-auth { display: none; }
+@media (max-width: 560px) { a.nav-user { padding: 3px; } a.nav-user .nav-user-caret { display: none; } }
+@media (max-width: 640px) { .hide-sm { display: none; } }
+.navbar .nav-actions .theme-toggle { width: 40px; height: 40px; }

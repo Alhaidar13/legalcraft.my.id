@@ -50,8 +50,6 @@
   const params = new URLSearchParams(location.search);
   const state = { order: null, clockSkew: 0, timerId: null, waitTimerId: null, pollId: null, pollEvery: 0, simulator: false, successShown: false, failedShown: false };
 
-  fetch('/api/payment/config').then((r) => r.json()).then((c) => { state.simulator = !!c.simulator; syncSim(); }).catch(() => {});
-  const syncSim = () => { const b = $('#sim-box'); if (b) b.hidden = !(state.simulator && state.order && state.order.status === 'waiting'); };
 
   /* ---------- Ringkasan ---------- */
   const selService = $('#p-service');
@@ -205,7 +203,7 @@
       return;
     }
 
-    if (order.status === 'waiting') { stopTimer(); renderWaiting(order); setStep(3); startWaitTimer(); startPoll(POLL_WAITING); syncSim(); return; }
+    if (order.status === 'waiting') { stopTimer(); renderWaiting(order); setStep(3); startWaitTimer(); startPoll(POLL_WAITING); return; }
 
     // pending
     setStep(2);
@@ -293,20 +291,6 @@
     await poll();
     if (state.order && state.order.status === 'waiting') toast('Dana belum terdeteksi. Sistem akan terus mengecek otomatis.');
     b.disabled = false; b.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Cek Status Sekarang';
-  });
-
-  $('#btn-simulate').addEventListener('click', async () => {
-    const b = $('#btn-simulate'); b.disabled = true;
-    try { handleStatus(await api(`/api/orders/${encodeURIComponent(state.order.id)}/simulate-payment`, { method: 'POST' })); }
-    catch (err) { toast(err.message); }
-    finally { b.disabled = false; }
-  });
-
-  $('#btn-simulate-reject').addEventListener('click', async () => {
-    const b = $('#btn-simulate-reject'); b.disabled = true;
-    try { handleStatus(await api(`/api/orders/${encodeURIComponent(state.order.id)}/simulate-reject`, { method: 'POST' })); }
-    catch (err) { toast(err.message); }
-    finally { b.disabled = false; }
   });
 
   $('#btn-change').addEventListener('click', async () => {

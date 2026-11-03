@@ -282,12 +282,9 @@
 .wait-hint { font-size: .85rem; color: #475569; background: #F1F5F9; border-radius: 12px; padding: 10px 14px; max-width: 480px; margin: 0; }
 .wait-hint a { color: var(--primary); font-weight: 600; }
 .wait-actions { width: 100%; max-width: 480px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.sim-box { width: 100%; max-width: 480px; border: 2px dashed #F59E0B; background: #FFFBEB; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
-.sim-box p { margin: 0; font-size: .85rem; color: #92400E; }
 .pay-stepper li[data-step="3"].active span { background: #2563EB; }
 #p-service:disabled { background: #F1F5F9; cursor: not-allowed; }
 
 /* Batas verifikasi (penolakan otomatis) */
 .w-deadline { font-variant-numeric: tabular-nums; color: var(--primary); }
 .w-deadline.urgent { color: var(--danger); }
-#btn-simulate-reject { border-color: #F59E0B; color: #92400E; }

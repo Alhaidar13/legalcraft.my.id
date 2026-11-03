@@ -45,6 +45,15 @@ export type OrderRow = {
   reject_reason: string | null
 }
 
-export type PublicUser = { id: string; name: string; email: string; phone: string; avatar: string | null }
+export type PublicUser = {
+  id: string
+  name: string
+  email: string
+  phone: string
+  avatar: string | null
+  hasPassword: boolean
+  googleLinked: boolean
+  createdAt: string
+}
 
 export type AppEnv = { Bindings: Bindings; Variables: { user: PublicUser | null } }

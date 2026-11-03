@@ -436,25 +436,25 @@
     if (!auth.user) { document.body.classList.add('is-guest'); return; }
     document.body.classList.add('is-member');
     if (navAuth) {
-      // Tidak ada dashboard lagi: tampilkan nama user + tombol Keluar
+      // Chip user (foto + nama) → halaman profil (Profil Saya & Pesananku)
       const u = auth.user;
       const first = escapeHTML((u.name || 'Akun').split(' ')[0]);
-      const chip = document.createElement('span');
+      const chip = document.createElement('a');
       chip.className = 'nav-user';
-      chip.title = (u.name || '') + (u.email ? ' • ' + u.email : '');
+      chip.href = '/profil';
+      chip.id = 'nav-profile';
+      chip.title = 'Profil saya • ' + (u.name || '') + (u.email ? ' (' + u.email + ')' : '');
+      chip.setAttribute('aria-label', 'Buka profil saya');
       chip.innerHTML = (u.avatar
         ? `<img src="${escapeHTML(u.avatar)}" alt="" referrerpolicy="no-referrer" />`
-        : `<span class="nav-user-ph">${escapeHTML((u.name || '?').charAt(0).toUpperCase())}</span>`) + `<span class="nav-user-name">${first}</span>`;
-      navAuth.before(chip);
-      navAuth.href = '#';
-      navAuth.id = 'btn-logout';
-      navAuth.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Keluar';
-      navAuth.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (!confirm('Keluar dari akun LegalCraft?')) return;
-        await fetch('/api/auth/logout', { method: 'POST', credentials: 'same-origin' }).catch(() => {});
-        location.href = '/';
+        : `<span class="nav-user-ph">${escapeHTML((u.name || '?').charAt(0).toUpperCase())}</span>`) +
+        `<span class="nav-user-name">${first}</span><i class="fa-solid fa-chevron-right nav-user-caret" aria-hidden="true"></i>`;
+      const img = chip.querySelector('img');
+      if (img) img.addEventListener('error', () => {
+        const ph = document.createElement('span'); ph.className = 'nav-user-ph';
+        ph.textContent = (u.name || '?').charAt(0).toUpperCase(); img.replaceWith(ph);
       });
+      navAuth.before(chip);
     }
     prefillFromUser();
     // Kembali dari login: lanjutkan aksi yang tadi diminta

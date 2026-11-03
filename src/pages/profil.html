@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var t=localStorage.getItem('lc_theme');if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Saya — LegalCraft</title>
+  <meta name="theme-color" content="#17517E" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317517E'/><path d='M20 16h14l10 10v22H20z' fill='white'/><path d='M26 36l5 5 9-10' stroke='%2317517E' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
+  <link href="/static/style.css?v=8" rel="stylesheet" />
+  <link href="/static/profile.css?v=8" rel="stylesheet" />
+  <link href="/static/theme.css?v=8" rel="stylesheet" />
+</head>
+<body class="profile-body">
+
+  <header class="site-header scrolled">
+    <nav class="navbar container" aria-label="Navigasi">
+      <a href="/beranda" class="brand" aria-label="LegalCraft - Beranda">
+        <span class="brand-mark"><i class="fa-solid fa-file-signature"></i></span>
+        <span class="brand-name">Legal<span>Craft</span></span>
+      </a>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ganti tema"></button>
+        <a href="/beranda" class="btn btn-outline btn-sm"><i class="fa-solid fa-arrow-left"></i><span class="hide-sm"> Kembali ke Beranda</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-main container" id="profile-main">
+
+    <!-- ============ KARTU IDENTITAS ============ -->
+    <section class="profile-hero" id="profile-hero" aria-label="Identitas akun">
+      <span class="ph-blob" aria-hidden="true"></span>
+      <div class="ph-avatar-wrap">
+        <div class="ph-avatar" id="ph-avatar" aria-hidden="true"><span class="skeleton-circle"></span></div>
+        <label class="ph-avatar-btn" for="avatar-input" title="Ganti foto profil">
+          <i class="fa-solid fa-camera"></i><span class="sr-only">Ganti foto profil</span>
+        </label>
+        <input type="file" id="avatar-input" accept="image/png,image/jpeg,image/webp" hidden />
+      </div>
+      <div class="ph-info">
+        <h1 class="ph-name" id="ph-name"><span class="skeleton-line w-60"></span></h1>
+        <p class="ph-email" id="ph-email"><span class="skeleton-line w-40"></span></p>
+        <div class="ph-badges" id="ph-badges"></div>
+      </div>
+      <div class="ph-stats" id="ph-stats">
+        <div><strong id="stat-total">–</strong><small>Total pesanan</small></div>
+        <div><strong id="stat-paid">–</strong><small>Berhasil</small></div>
+        <div><strong id="stat-active">–</strong><small>Menunggu</small></div>
+      </div>
+    </section>
+
+    <!-- ============ TABS ============ -->
+    <div class="profile-tabs" role="tablist" aria-label="Menu profil" id="profile-tabs">
+      <button type="button" role="tab" class="ptab active" id="tab-profil" aria-selected="true" aria-controls="panel-profil" data-tab="profil">
+        <i class="fa-solid fa-user"></i> Profil Saya
+      </button>
+      <button type="button" role="tab" class="ptab" id="tab-pesanan" aria-selected="false" aria-controls="panel-pesanan" data-tab="pesanan" tabindex="-1">
+        <i class="fa-solid fa-receipt"></i> Pesananku <span class="ptab-count" id="tab-count" hidden>0</span>
+      </button>
+      <span class="ptab-indicator" id="ptab-indicator" aria-hidden="true"></span>
+    </div>
+
+    <!-- ============ PANEL: PROFIL SAYA ============ -->
+    <section class="tab-panel" id="panel-profil" role="tabpanel" aria-labelledby="tab-profil">
+
+      <!-- Informasi akun (mode lihat) -->
+      <article class="pcard" id="card-info">
+        <header class="pcard-head">
+          <div>
+            <h2><i class="fa-solid fa-id-badge"></i> Informasi Akun</h2>
+            <p>Data ini dipakai untuk mengisi form konsultasi &amp; pembayaran secara otomatis.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-edit"><i class="fa-solid fa-pen"></i> Edit Profil</button>
+        </header>
+
+        <dl class="info-list" id="info-view">
+          <div class="info-row">
+            <dt><span class="info-icon"><i class="fa-solid fa-user"></i></span> Nama Lengkap</dt>
+            <dd id="v-name">-</dd>
+          </div>
+          <div class="info-row">
+            <dt><span class="info-icon"><i class="fa-solid fa-envelope"></i></span> Email</dt>
+            <dd id="v-email">-</dd>
+          </div>
+          <div class="info-row">
+            <dt><span class="info-icon wa"><i class="fa-brands fa-whatsapp"></i></span> No. WhatsApp</dt>
+            <dd id="v-phone">-</dd>
+          </div>
+          <div class="info-row">
+            <dt><span class="info-icon"><i class="fa-solid fa-key"></i></span> Metode Login</dt>
+            <dd id="v-method">-</dd>
+          </div>
+          <div class="info-row">
+            <dt><span class="info-icon"><i class="fa-solid fa-calendar-check"></i></span> Bergabung Sejak</dt>
+            <dd id="v-joined">-</dd>
+          </div>
+        </dl>
+
+        <!-- Form edit profil -->
+        <form class="edit-form" id="edit-form" novalidate hidden>
+          <div class="edit-avatar">
+            <div class="ph-avatar sm" id="edit-avatar-preview" aria-hidden="true"></div>
+            <div class="edit-avatar-actions">
+              <label for="avatar-input" class="btn btn-outline btn-sm"><i class="fa-solid fa-image"></i> Ganti Foto</label>
+              <button type="button" class="btn btn-link btn-sm" id="btn-remove-avatar"><i class="fa-solid fa-trash-can"></i> Hapus foto</button>
+              <small>PNG, JPG, atau WEBP. Foto otomatis dipotong persegi.</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="e-name">Nama Lengkap <span class="req">*</span></label>
+            <input type="text" id="e-name" name="name" autocomplete="name" maxlength="100" />
+            <small class="error-msg" data-error-for="name"></small>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="e-email">Email <span class="req">*</span></label>
+              <input type="email" id="e-email" name="email" autocomplete="email" />
+              <small class="field-hint" id="email-hint" hidden><i class="fa-brands fa-google"></i> Email akun Google tidak dapat diubah.</small>
+              <small class="error-msg" data-error-for="email"></small>
+            </div>
+            <div class="form-group">
+              <label for="e-phone">No. WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="e-phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="08xxxxxxxxxx" />
+              <small class="error-msg" data-error-for="phone"></small>
+            </div>
+          </div>
+          <p class="form-error" id="edit-error" hidden></p>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" id="btn-cancel-edit">Batal</button>
+            <button type="submit" class="btn btn-primary" id="btn-save"><i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan</button>
+          </div>
+        </form>
+      </article>
+
+      <!-- Ubah kata sandi -->
+      <article class="pcard" id="card-password">
+        <header class="pcard-head">
+          <div>
+            <h2><i class="fa-solid fa-lock"></i> <span id="pw-title">Ubah Kata Sandi</span></h2>
+            <p id="pw-desc">Gunakan minimal 8 karakter. Kombinasi huruf besar, angka &amp; simbol lebih aman.</p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-pw" aria-expanded="false" aria-controls="pw-form"><i class="fa-solid fa-key"></i> <span>Ubah</span></button>
+        </header>
+
+        <form class="pw-form" id="pw-form" novalidate hidden>
+          <div class="form-group" id="grp-current">
+            <label for="pw-current">Kata Sandi Saat Ini <span class="req">*</span></label>
+            <div class="pw-wrap">
+              <input type="password" id="pw-current" name="currentPassword" autocomplete="current-password" />
+              <button type="button" class="pw-toggle" aria-label="Tampilkan kata sandi"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <small class="error-msg" data-error-for="currentPassword"></small>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pw-new">Kata Sandi Baru <span class="req">*</span></label>
+              <div class="pw-wrap">
+                <input type="password" id="pw-new" name="newPassword" autocomplete="new-password" />
+                <button type="button" class="pw-toggle" aria-label="Tampilkan kata sandi"><i class="fa-solid fa-eye"></i></button>
+              </div>
+              <div class="pw-meter" id="pw-meter" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <small class="pw-meter-label" id="pw-meter-label"></small>
+              <small class="error-msg" data-error-for="newPassword"></small>
+            </div>
+            <div class="form-group">
+              <label for="pw-confirm">Konfirmasi Kata Sandi Baru <span class="req">*</span></label>
+              <div class="pw-wrap">
+                <input type="password" id="pw-confirm" name="confirmPassword" autocomplete="new-password" />
+                <button type="button" class="pw-toggle" aria-label="Tampilkan kata sandi"><i class="fa-solid fa-eye"></i></button>
+              </div>
+              <small class="error-msg" data-error-for="confirmPassword"></small>
+            </div>
+          </div>
+          <p class="pw-note"><i class="fa-solid fa-shield-halved"></i> Setelah kata sandi diubah, sesi login di perangkat lain akan otomatis dikeluarkan.</p>
+          <p class="form-error" id="pw-error" hidden></p>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" id="btn-cancel-pw">Batal</button>
+            <button type="submit" class="btn btn-primary" id="btn-save-pw"><i class="fa-solid fa-check"></i> Simpan Kata Sandi</button>
+          </div>
+        </form>
+      </article>
+
+      <!-- Tampilan & Logout -->
+      <article class="pcard pcard-row" id="card-theme">
+        <div>
+          <h2><i class="fa-solid fa-circle-half-stroke"></i> Tampilan</h2>
+          <p>Pilih mode terang atau gelap sesuai kenyamananmu.</p>
+        </div>
+        <div class="theme-switch" role="radiogroup" aria-label="Pilih tema">
+          <button type="button" role="radio" data-set-theme="light" aria-checked="false"><i class="fa-solid fa-sun"></i> Terang</button>
+          <button type="button" role="radio" data-set-theme="dark" aria-checked="false"><i class="fa-solid fa-moon"></i> Gelap</button>
+        </div>
+      </article>
+
+      <article class="pcard pcard-row pcard-danger" id="card-logout">
+        <div>
+          <h2><i class="fa-solid fa-right-from-bracket"></i> Keluar dari Akun</h2>
+          <p>Akhiri sesi login LegalCraft di perangkat ini.</p>
+        </div>
+        <button type="button" class="btn btn-danger" id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </article>
+    </section>
+
+    <!-- ============ PANEL: PESANANKU ============ -->
+    <section class="tab-panel" id="panel-pesanan" role="tabpanel" aria-labelledby="tab-pesanan" hidden>
+      <div class="orders-toolbar">
+        <div class="order-filters" role="group" aria-label="Filter status pesanan" id="order-filters">
+          <button type="button" class="chip active" data-filter="all">Semua <b data-count="all">0</b></button>
+          <button type="button" class="chip" data-filter="active">Menunggu <b data-count="active">0</b></button>
+          <button type="button" class="chip" data-filter="paid">Berhasil <b data-count="paid">0</b></button>
+          <button type="button" class="chip" data-filter="failed">Gagal / Batal <b data-count="failed">0</b></button>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="btn-refresh-orders"><i class="fa-solid fa-arrows-rotate"></i><span class="hide-sm"> Muat Ulang</span></button>
+      </div>
+
+      <div class="orders-list" id="orders-list" aria-live="polite">
+        <div class="order-skeleton"></div><div class="order-skeleton"></div>
+      </div>
+
+      <div class="orders-empty" id="orders-empty" hidden>
+        <span class="empty-icon"><i class="fa-solid fa-box-open"></i></span>
+        <h3 id="empty-title">Belum ada pesanan</h3>
+        <p id="empty-text">Pesanan layanan legalitas yang kamu buat akan muncul di sini.</p>
+        <a href="/beranda#harga" class="btn btn-primary"><i class="fa-solid fa-tags"></i> Lihat Price List</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ MODAL KONFIRMASI LOGOUT ============ -->
+  <div class="modal" id="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logout-title" hidden>
+    <div class="modal-overlay" data-close-logout></div>
+    <div class="modal-dialog confirm-dialog" role="document">
+      <span class="confirm-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+      <h2 id="logout-title">Keluar dari akun?</h2>
+      <p>Kamu perlu login lagi untuk melihat price list, konsultasi, dan melakukan pembayaran.</p>
+      <div class="confirm-actions">
+        <button type="button" class="btn btn-outline btn-block" data-close-logout>Batal</button>
+        <button type="button" class="btn btn-danger btn-block" id="btn-logout-confirm"><i class="fa-solid fa-right-from-bracket"></i> Ya, Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/static/profile.js?v=8"></script>
+  <script src="/static/theme.js?v=8"></script>
+</body>
+</html>
