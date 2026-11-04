@@ -217,11 +217,11 @@
 
 /* ---------- Dark mode khusus halaman profil ---------- */
 html[data-theme="dark"] .profile-tabs, html[data-theme="dark"] .pcard, html[data-theme="dark"] .order-card, html[data-theme="dark"] .orders-empty, html[data-theme="dark"] .chip { background: var(--surface); }
-html[data-theme="dark"] .ph-avatar-btn { background: #E6EEF6; color: #0B2540; border-color: #0B2540; }
-html[data-theme="dark"] .ph-blob { background: rgba(90,174,224,.12); }
-html[data-theme="dark"] .info-icon, html[data-theme="dark"] .empty-icon, html[data-theme="dark"] .ptab-count { background: rgba(90,174,224,.14); }
-html[data-theme="dark"] .chip.active { background: var(--primary); border-color: var(--primary); color: #0B1622; }
-html[data-theme="dark"] .chip.active b { background: rgba(11,22,34,.2); color: #0B1622; }
+html[data-theme="dark"] .ph-avatar-btn { background: #E2E8F0; color: #0B1329; border-color: #0B1329; }
+html[data-theme="dark"] .ph-blob { background: rgba(96,181,238,.12); }
+html[data-theme="dark"] .info-icon, html[data-theme="dark"] .empty-icon, html[data-theme="dark"] .ptab-count { background: rgba(96,181,238,.14); }
+html[data-theme="dark"] .chip.active { background: var(--primary); border-color: var(--primary); color: #0B1329; }
+html[data-theme="dark"] .chip.active b { background: rgba(11,19,41,.2); color: #0B1329; }
 html[data-theme="dark"] .st-paid { background: rgba(52,211,153,.14); color: #6EE7B7; }
 html[data-theme="dark"] .st-pending { background: rgba(245,158,11,.15); color: #FCD34D; }
 html[data-theme="dark"] .st-waiting { background: rgba(59,130,246,.16); color: #93C5FD; }
@@ -230,4 +230,4 @@ html[data-theme="dark"] .st-cancelled { background: rgba(148,163,184,.14); color
 html[data-theme="dark"] .form-error { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.35); color: #FCA5A5; }
 html[data-theme="dark"] .pcard-danger { border-color: rgba(248,113,113,.3); }
 html[data-theme="dark"] .confirm-icon { background: rgba(248,113,113,.14); }
-html[data-theme="dark"] .toast:not(.ok):not(.err) { background: #E6EEF6; color: #0B1622; }
+html[data-theme="dark"] .toast:not(.ok):not(.err) { background: #E2E8F0; color: #0B1329; }

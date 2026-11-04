@@ -1,18 +1,20 @@
 /* =========================================================
    LegalCraft — Light & Dark Mode
    ---------------------------------------------------------
-   LIGHT (warna dasar)          DARK (turunan dari brand #17517E)
-   Primary    #17517E           Primary (teks/ikon) #5AAEE0
-   Accent     #2C83B8           Accent              #7FC3EA
-   Background #F8FAFC           Background          #0B1622  (deep navy)
-   Surface    #FFFFFF           Surface / kartu     #122131
-   Surface 2  #F8FAFC           Surface 2           #0F1C2A
-   Tint       #F1F7FC           Tint biru           #16304A
-   Text       #0F172A           Text                #E6EEF6
-   Muted      #475569           Muted               #9AB0C4
-   Border     #E2E8F0           Border              #223A50
-   Hero       #17517E→#6FB4DD   Hero                #0B2540→#1F6A99
-   Footer     #17517E           Footer              #081320
+   LIGHT (warna dasar)          DARK "Midnight Slate"
+   Primary    #17517E           Primary (teks/ikon) #60B5EE  (sky)
+   Accent     #2C83B8           Accent              #93D0F5
+   Background #F8FAFC           Background          #0B1329  (midnight navy)
+   Surface    #FFFFFF           Surface / kartu     #1E293B  (slate)
+   Surface 2  #F8FAFC           Surface 2 / input   #131D33  (di antara keduanya)
+   Tint       #F1F7FC           Tint biru           #1B3050
+   Text       #0F172A           Text                #E2E8F0
+   Muted      #475569           Muted               #94A3B8
+   Border     #E2E8F0           Border              #2B3A52
+   Hero       #17517E→#6FB4DD   Hero                #0B1329→#1E293B→#1D5A8A
+   Footer     #17517E           Footer              #070D1F
+   Semua warna gelap diturunkan dari 2 warna inti (#0B1329 & #1E293B)
+   + satu aksen sky-blue agar kontras tetap nyaman (WCAG AA).
    ========================================================= */
 
 :root {
@@ -28,34 +30,39 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --primary: #5AAEE0;
-  --primary-600: #4A9BCB;
-  --primary-700: #3A86B4;
-  --accent: #7FC3EA;
-  --accent-light: #A5D6F2;
-  --bg: #0B1622;
-  --surface: #122131;
-  --surface-2: #0F1C2A;
-  --tint: #16304A;
-  --track: #223A50;
-  --text: #E6EEF6;
-  --muted: #9AB0C4;
-  --border: #223A50;
+  --primary: #60B5EE;
+  --primary-600: #4FA3DC;
+  --primary-700: #3C8FC8;
+  --accent: #93D0F5;
+  --accent-light: #BAE2FA;
+  --bg: #0B1329;
+  --surface: #1E293B;
+  --surface-2: #131D33;
+  --tint: #1B3050;
+  --track: #334155;
+  --text: #E2E8F0;
+  --muted: #94A3B8;
+  --border: #2B3A52;
   --danger: #F87171;
   --success: #34D399;
-  --header-bg: rgba(11, 22, 34, .82);
-  --header-bg-scrolled: rgba(14, 27, 41, .96);
-  --input-bg: #0F1C2A;
-  --footer-bg: #081320;
+  --header-bg: rgba(11, 19, 41, .78);
+  --header-bg-scrolled: rgba(11, 19, 41, .94);
+  --input-bg: #131D33;
+  --footer-bg: #070D1F;
+  --glow: rgba(96, 181, 238, .14);
 
-  --grad-hero: linear-gradient(135deg, #0B2540 0%, #134467 55%, #1F6A99 100%);
-  --grad-btn: linear-gradient(135deg, #1D6299 0%, #2C83B8 100%);
-  --grad-cta: linear-gradient(135deg, #0A1F33 0%, #134467 50%, #1F6A99 100%);
-  --grad-soft: linear-gradient(180deg, #0E1B29 0%, #0B1622 100%);
+  --grad-hero: radial-gradient(120% 90% at 85% 10%, rgba(96, 181, 238, .28) 0%, rgba(96, 181, 238, 0) 55%),
+               linear-gradient(135deg, #0B1329 0%, #1E293B 55%, #1D5A8A 100%);
+  --grad-btn: linear-gradient(135deg, #1F6DA6 0%, #3A9AD6 100%);
+  --grad-cta: radial-gradient(80% 120% at 100% 0%, rgba(96, 181, 238, .22) 0%, rgba(96, 181, 238, 0) 60%),
+              linear-gradient(135deg, #0B1329 0%, #1E293B 50%, #1D5A8A 100%);
+  --grad-soft: radial-gradient(900px 500px at 100% -10%, rgba(96, 181, 238, .08), transparent 60%),
+               radial-gradient(700px 400px at -10% 30%, rgba(30, 41, 59, .9), transparent 70%),
+               linear-gradient(180deg, #0E1730 0%, #0B1329 100%);
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35), 0 1px 3px rgba(0, 0, 0, .3);
-  --shadow: 0 12px 30px -12px rgba(0, 0, 0, .6);
-  --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, .75);
+  --shadow-sm: 0 1px 2px rgba(2, 6, 18, .45), 0 1px 3px rgba(2, 6, 18, .35);
+  --shadow: 0 14px 32px -14px rgba(2, 6, 18, .75);
+  --shadow-lg: 0 26px 60px -22px rgba(2, 6, 18, .85);
 }
 
 /* Transisi halus saat ganti tema (hanya ketika toggle diklik) */
@@ -91,22 +98,22 @@ html[data-theme="dark"] body { background: var(--bg); color: var(--text); }
 html[data-theme="dark"] .site-header { background: var(--header-bg); }
 html[data-theme="dark"] .site-header.scrolled { background: var(--header-bg-scrolled); }
 html[data-theme="dark"] .hamburger { background: var(--surface); }
-html[data-theme="dark"] .nav-link:hover, html[data-theme="dark"] .nav-link.active { background: rgba(90, 174, 224, .12); }
-html[data-theme="dark"] .brand-name { color: #E6EEF6; }
+html[data-theme="dark"] .nav-link:hover, html[data-theme="dark"] .nav-link.active { background: rgba(96, 181, 238, .12); }
+html[data-theme="dark"] .brand-name { color: #F1F5F9; }
 html[data-theme="dark"] .brand-name span { color: var(--primary); }
-html[data-theme="dark"] .eyebrow { background: rgba(90, 174, 224, .14); }
+html[data-theme="dark"] .eyebrow { background: rgba(96, 181, 238, .14); }
 html[data-theme="dark"] .eyebrow-light { color: #fff; background: rgba(255, 255, 255, .12); }
 
 /* Hero */
-html[data-theme="dark"] .hero::after { background: linear-gradient(180deg, rgba(11, 22, 34, 0) 0%, var(--bg) 100%); }
-html[data-theme="dark"] .blob-1, html[data-theme="dark"] .blob-cta { background: #1F6A99; opacity: .45; }
-html[data-theme="dark"] .blob-2 { background: #050D16; }
+html[data-theme="dark"] .hero::after { background: linear-gradient(180deg, rgba(11, 19, 41, 0) 0%, var(--bg) 100%); }
+html[data-theme="dark"] .blob-1, html[data-theme="dark"] .blob-cta { background: #1D5A8A; opacity: .5; }
+html[data-theme="dark"] .blob-2 { background: #1E293B; opacity: .7; }
 html[data-theme="dark"] .doc-main, html[data-theme="dark"] .float-card { background: var(--surface); }
 html[data-theme="dark"] .doc-back { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .14); }
-html[data-theme="dark"] .doc-lines span { background: linear-gradient(90deg, #1E3A55, #172C40); }
+html[data-theme="dark"] .doc-lines span { background: linear-gradient(90deg, #334155, #243247); }
 html[data-theme="dark"] .doc-progress-bar { background: var(--track); }
 html[data-theme="dark"] .float-card small { color: var(--primary); }
-html[data-theme="dark"] .fc-icon, html[data-theme="dark"] .step-icon, html[data-theme="dark"] .price-badge { background: rgba(90, 174, 224, .14); }
+html[data-theme="dark"] .fc-icon, html[data-theme="dark"] .step-icon, html[data-theme="dark"] .price-badge { background: rgba(96, 181, 238, .14); }
 
 /* Kartu & section */
 html[data-theme="dark"] .service-card,
@@ -117,35 +124,35 @@ html[data-theme="dark"] .t-card,
 html[data-theme="dark"] .faq-item,
 html[data-theme="dark"] .benefit-toggle { background: var(--surface); }
 html[data-theme="dark"] .benefit-toggle:hover, html[data-theme="dark"] .benefit-toggle[aria-expanded="true"] { background: var(--tint); }
-html[data-theme="dark"] .step-num { color: rgba(90, 174, 224, .16); }
+html[data-theme="dark"] .step-num { color: rgba(96, 181, 238, .16); }
 html[data-theme="dark"] .service-price, html[data-theme="dark"] .faq-prices li { background: var(--tint); }
-html[data-theme="dark"] .faq-question i { background: rgba(90, 174, 224, .14); }
-html[data-theme="dark"] .faq-item.open .faq-question i { background: var(--primary); color: #0B1622; }
-html[data-theme="dark"] .price-card-featured { border: 1px solid rgba(90, 174, 224, .35); }
-html[data-theme="dark"] .price-old { color: #6B8199; }
-html[data-theme="dark"] .t-quote { color: rgba(90, 174, 224, .3); }
+html[data-theme="dark"] .faq-question i { background: rgba(96, 181, 238, .14); }
+html[data-theme="dark"] .faq-item.open .faq-question i { background: var(--primary); color: #0B1329; }
+html[data-theme="dark"] .price-card-featured { border: 1px solid rgba(96, 181, 238, .35); }
+html[data-theme="dark"] .price-old { color: #64748B; }
+html[data-theme="dark"] .t-quote { color: rgba(96, 181, 238, .3); }
 html[data-theme="dark"] .promo-strip { background: rgba(239, 68, 68, .12); color: #FCA5A5; border-color: rgba(239, 68, 68, .35); }
-html[data-theme="dark"] .price-lock { background: rgba(18, 33, 49, .96) !important; }
-html[data-theme="dark"] .price-lock-icon { background: rgba(90, 174, 224, .14); }
-html[data-theme="dark"] .final-cta { border: 1px solid rgba(90, 174, 224, .2); }
+html[data-theme="dark"] .price-lock { background: rgba(30, 41, 59, .96) !important; }
+html[data-theme="dark"] .price-lock-icon { background: rgba(96, 181, 238, .14); }
+html[data-theme="dark"] .final-cta { border: 1px solid rgba(96, 181, 238, .2); }
 html[data-theme="dark"] .site-footer { background: var(--footer-bg); border-top: 1px solid var(--border); }
 
 /* Tombol */
-html[data-theme="dark"] .btn-outline:hover { color: #0B1622; }
-html[data-theme="dark"] .btn-white { background: #F1F7FC; color: #17517E; }
+html[data-theme="dark"] .btn-outline:hover { color: #0B1329; }
+html[data-theme="dark"] .btn-white { background: #F1F5F9; color: #0B1329; }
 html[data-theme="dark"] .btn-white:hover { background: #fff; }
 
 /* Modal & form */
 html[data-theme="dark"] .modal-dialog { background: var(--surface); }
-html[data-theme="dark"] .modal-overlay { background: rgba(2, 8, 15, .7); }
+html[data-theme="dark"] .modal-overlay { background: rgba(5, 9, 22, .72); }
 html[data-theme="dark"] .form-group input,
 html[data-theme="dark"] .form-group select,
 html[data-theme="dark"] .form-group textarea { background-color: var(--input-bg); color: var(--text); }
 html[data-theme="dark"] .form-group input:focus,
 html[data-theme="dark"] .form-group select:focus,
-html[data-theme="dark"] .form-group textarea:focus { background-color: var(--surface-2); box-shadow: 0 0 0 4px rgba(90, 174, 224, .18); }
-html[data-theme="dark"] .form-group input::placeholder, html[data-theme="dark"] .form-group textarea::placeholder { color: #5F7489; }
-html[data-theme="dark"] .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235AAEE0' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+html[data-theme="dark"] .form-group textarea:focus { background-color: var(--surface-2); box-shadow: 0 0 0 4px rgba(96, 181, 238, .18); }
+html[data-theme="dark"] .form-group input::placeholder, html[data-theme="dark"] .form-group textarea::placeholder { color: #64748B; }
+html[data-theme="dark"] .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2360B5EE' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
 html[data-theme="dark"] .form-group.has-error input, html[data-theme="dark"] .form-group.has-error select { background-color: rgba(248, 113, 113, .08); }
 html[data-theme="dark"] .service-summary { background: var(--tint); }
 html[data-theme="dark"] .gate-close { background: var(--surface-2); }
@@ -164,7 +171,7 @@ html[data-theme="dark"] .auth-alert.err { background: rgba(239, 68, 68, .12); bo
 html[data-theme="dark"] .auth-alert.info { background: rgba(59, 130, 246, .12); border-color: rgba(59, 130, 246, .35); color: #93C5FD; }
 html[data-theme="dark"] .auth-success .box { background: var(--surface); }
 html[data-theme="dark"] .auth-success circle { fill: rgba(52, 211, 153, .15); }
-html[data-theme="dark"] .slide-art .art-icon { background: #F1F7FC; color: #17517E; }
+html[data-theme="dark"] .slide-art .art-icon { background: #1E293B; color: #60B5EE; border: 1px solid rgba(96, 181, 238, .35); }
 
 /* ---------- Pembayaran ---------- */
 html[data-theme="dark"] .pay-stepper li,
@@ -180,7 +187,7 @@ html[data-theme="dark"] .method-logo { background: #F8FAFC; }
 html[data-theme="dark"] .method-card:has(input:checked) { background: var(--tint); }
 html[data-theme="dark"] .va-head, html[data-theme="dark"] .sum-order, html[data-theme="dark"] .failed-meta, html[data-theme="dark"] .wait-card { background: var(--surface-2); }
 html[data-theme="dark"] .howto-item.open .howto-q, html[data-theme="dark"] .sum-service { background: var(--tint); }
-html[data-theme="dark"] .copy-btn:hover { color: #0B1622; }
+html[data-theme="dark"] .copy-btn:hover { color: #0B1329; }
 html[data-theme="dark"] .va-warn { background: rgba(245, 158, 11, .1); color: #FCD34D; }
 html[data-theme="dark"] .code-hl { background: rgba(245, 158, 11, .2); color: #FCD34D; }
 html[data-theme="dark"] .timer-box { background: linear-gradient(135deg, rgba(245, 158, 11, .14), rgba(245, 158, 11, .06)); border-color: rgba(245, 158, 11, .4); }
@@ -194,7 +201,73 @@ html[data-theme="dark"] .waiting-box { background: rgba(59, 130, 246, .1); borde
 html[data-theme="dark"] #p-service:disabled { background-color: var(--surface-2); opacity: .8; }
 html[data-theme="dark"] .receipt-instruction { background: rgba(52, 211, 153, .1); border-color: rgba(52, 211, 153, .35); color: #6EE7B7; }
 html[data-theme="dark"] .x-circle { fill: rgba(248, 113, 113, .14); }
-html[data-theme="dark"] .toast { background: #E6EEF6; color: #0B1622; }
+html[data-theme="dark"] .toast { background: #E2E8F0; color: #0B1329; }
 /* Struk tetap seperti kertas putih agar mudah dibaca & diunduh */
 .receipt { --text: #0F172A; --muted: #475569; --border: #E2E8F0; --success: #16A34A; color: #0F172A; }
 html[data-theme="dark"] .receipt-tear { filter: none; }
+
+/* =========================================================
+   Sentuhan kreatif "Midnight Slate"
+   ========================================================= */
+/* Latar halaman: navy dengan cahaya sky lembut di pojok */
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(1100px 600px at 110% -10%, rgba(96, 181, 238, .07), transparent 60%),
+    radial-gradient(900px 600px at -15% 40%, rgba(30, 41, 59, .55), transparent 65%),
+    var(--bg);
+  background-attachment: fixed;
+}
+/* Garis tepi atas bercahaya pada header saat discroll */
+html[data-theme="dark"] .site-header.scrolled { box-shadow: 0 1px 0 rgba(96, 181, 238, .12), 0 10px 30px -18px rgba(2, 6, 18, .9); }
+
+/* Kartu slate: highlight tipis di tepi atas (efek kaca) + glow saat hover */
+html[data-theme="dark"] .service-card,
+html[data-theme="dark"] .step,
+html[data-theme="dark"] .why-item,
+html[data-theme="dark"] .price-card:not(.price-card-featured),
+html[data-theme="dark"] .t-card,
+html[data-theme="dark"] .faq-item,
+html[data-theme="dark"] .pcard,
+html[data-theme="dark"] .order-card,
+html[data-theme="dark"] .pay-panel,
+html[data-theme="dark"] .pay-summary {
+  border-color: var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04), var(--shadow-sm);
+}
+html[data-theme="dark"] .service-card:hover,
+html[data-theme="dark"] .why-item:hover,
+html[data-theme="dark"] .price-card:not(.price-card-featured):hover,
+html[data-theme="dark"] .t-card:hover,
+html[data-theme="dark"] .order-card:hover {
+  border-color: rgba(96, 181, 238, .4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05), 0 18px 40px -20px rgba(96, 181, 238, .35);
+}
+
+/* Kartu harga unggulan: slate dengan kilau sky */
+html[data-theme="dark"] .price-card-featured {
+  box-shadow: 0 0 0 1px rgba(96, 181, 238, .18), 0 30px 60px -28px rgba(96, 181, 238, .45);
+}
+
+/* Section bergantian: sedikit lebih terang agar ritme halaman terasa */
+html[data-theme="dark"] .final-cta { box-shadow: 0 30px 70px -35px rgba(96, 181, 238, .45); }
+
+/* Footer: lebih gelap dari latar, dengan garis gradasi sky di atasnya */
+html[data-theme="dark"] .site-footer {
+  border-top: 0;
+  background-image: linear-gradient(90deg, transparent, rgba(96, 181, 238, .45), transparent);
+  background-size: 100% 1px; background-repeat: no-repeat; background-position: top;
+  background-color: var(--footer-bg);
+}
+
+/* Toggle tema: kotak slate, ikon matahari kuning hangat */
+html[data-theme="dark"] .theme-toggle:not(.on-dark) { background: var(--surface); border-color: var(--border); }
+html[data-theme="dark"] .theme-toggle:not(.on-dark):hover { border-color: rgba(96, 181, 238, .5); box-shadow: 0 0 0 4px rgba(96, 181, 238, .12); }
+
+/* Seleksi teks & scrollbar senada */
+html[data-theme="dark"] ::selection { background: rgba(96, 181, 238, .35); color: #F8FAFC; }
+html[data-theme="dark"] { scrollbar-color: #334155 #0B1329; }
+html[data-theme="dark"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+html[data-theme="dark"] ::-webkit-scrollbar-track { background: #0B1329; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #1E293B; border: 2px solid #0B1329; border-radius: 999px; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #334155; }
+html[data-theme="dark"] body.pay-body, html[data-theme="dark"] body.profile-body { background: var(--grad-soft); background-attachment: fixed; }

@@ -17,7 +17,7 @@
   var syncUI = function () {
     var dark = current() === 'dark';
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', dark ? '#0B1622' : '#17517E');
+    if (meta) meta.setAttribute('content', dark ? '#0B1329' : '#17517E');
     var btns = document.querySelectorAll('[data-theme-toggle]');
     for (var i = 0; i < btns.length; i++) {
       btns[i].setAttribute('aria-pressed', String(dark));

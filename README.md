@@ -89,18 +89,25 @@ Tombol bulan/matahari di navbar setiap halaman (login/register: tombol melayang 
 Pilihan disimpan di `localStorage` (`lc_theme`); default mengikuti setelan perangkat; tanpa "kedip" saat load.
 File: `public/static/theme.css` (palet + override) dan `public/static/theme.js` (toggle).
 
+Tema gelap **"Midnight Slate"** — dibangun dari 2 warna inti `#0B1329` (latar) & `#1E293B` (kartu),
+dengan satu aksen sky-blue agar kontras tetap nyaman dan tidak bertabrakan.
+
 | Token | Light (dasar) | Dark |
 |---|---|---|
-| Primary | `#17517E` | `#5AAEE0` |
-| Accent | `#2C83B8` | `#7FC3EA` |
-| Background | `#F8FAFC` | `#0B1622` (deep navy) |
-| Surface / kartu | `#FFFFFF` | `#122131` |
-| Tint biru | `#F1F7FC` | `#16304A` |
-| Text | `#0F172A` | `#E6EEF6` |
-| Muted | `#475569` | `#9AB0C4` |
-| Border | `#E2E8F0` | `#223A50` |
-| Hero | `#17517E → #6FB4DD` | `#0B2540 → #1F6A99` |
-| Footer | `#17517E` | `#081320` |
+| Primary | `#17517E` | `#60B5EE` (sky) |
+| Accent | `#2C83B8` | `#93D0F5` |
+| Background | `#F8FAFC` | `#0B1329` (midnight navy) |
+| Surface / kartu | `#FFFFFF` | `#1E293B` (slate) |
+| Surface 2 / input | `#F8FAFC` | `#131D33` |
+| Tint biru | `#F1F7FC` | `#1B3050` |
+| Text | `#0F172A` | `#E2E8F0` |
+| Muted | `#475569` | `#94A3B8` |
+| Border | `#E2E8F0` | `#2B3A52` |
+| Hero / CTA | `#17517E → #6FB4DD` | `#0B1329 → #1E293B → #1D5A8A` + glow sky |
+| Footer | `#17517E` | `#070D1F` + garis gradasi sky |
+
+Detail kreatif dark mode: cahaya radial lembut di latar, highlight kaca di tepi atas kartu,
+glow sky saat hover kartu, kilau pada kartu harga unggulan, scrollbar & seleksi teks senada.
 
 ## Development lokal
 ```bash
