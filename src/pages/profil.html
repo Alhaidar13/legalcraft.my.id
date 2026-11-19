@@ -2,19 +2,18 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <script>(function(){try{var t=localStorage.getItem('lc_theme');if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profil Saya — LegalCraft</title>
-  <meta name="theme-color" content="#17517E" />
+  <meta name="theme-color" content="#0F0F0F" />
   <meta name="robots" content="noindex" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317517E'/><path d='M20 16h14l10 10v22H20z' fill='white'/><path d='M26 36l5 5 9-10' stroke='%2317517E' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230F0F0F'/><path d='M20 16h14l10 10v22H20z' fill='%23C7FF2E'/><path d='M26 36l5 5 9-10' stroke='%230F0F0F' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
-  <link href="/static/style.css?v=8" rel="stylesheet" />
-  <link href="/static/profile.css?v=8" rel="stylesheet" />
-  <link href="/static/theme.css?v=8" rel="stylesheet" />
+  <link href="/static/style.css?v=9" rel="stylesheet" />
+  <link href="/static/profile.css?v=9" rel="stylesheet" />
+  <link href="/static/palette.css?v=9" rel="stylesheet" />
 </head>
 <body class="profile-body">
 
@@ -25,7 +24,6 @@
         <span class="brand-name">Legal<span>Craft</span></span>
       </a>
       <div class="nav-actions">
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ganti tema"></button>
         <a href="/beranda" class="btn btn-outline btn-sm"><i class="fa-solid fa-arrow-left"></i><span class="hide-sm"> Kembali ke Beranda</span></a>
       </div>
     </nav>
@@ -187,18 +185,7 @@
         </form>
       </article>
 
-      <!-- Tampilan & Logout -->
-      <article class="pcard pcard-row" id="card-theme">
-        <div>
-          <h2><i class="fa-solid fa-circle-half-stroke"></i> Tampilan</h2>
-          <p>Pilih mode terang atau gelap sesuai kenyamananmu.</p>
-        </div>
-        <div class="theme-switch" role="radiogroup" aria-label="Pilih tema">
-          <button type="button" role="radio" data-set-theme="light" aria-checked="false"><i class="fa-solid fa-sun"></i> Terang</button>
-          <button type="button" role="radio" data-set-theme="dark" aria-checked="false"><i class="fa-solid fa-moon"></i> Gelap</button>
-        </div>
-      </article>
-
+      <!-- Logout -->
       <article class="pcard pcard-row pcard-danger" id="card-logout">
         <div>
           <h2><i class="fa-solid fa-right-from-bracket"></i> Keluar dari Akun</h2>
@@ -249,7 +236,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="/static/profile.js?v=8"></script>
-  <script src="/static/theme.js?v=8"></script>
+  <script src="/static/profile.js?v=9"></script>
 </body>
 </html>

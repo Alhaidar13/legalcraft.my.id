@@ -80,34 +80,30 @@ Body bisa objek tunggal atau array (format Moota didukung; `type: "DB"` diabaika
 Klik chip foto + nama di navbar beranda (setelah login). Model **Tabbed View**:
 - **Profil Saya**: foto profil (upload → otomatis dipotong persegi & dikompres di browser), nama,
   email, No. WhatsApp, metode login, tanggal bergabung · tombol **Edit Profil** · **Ubah Kata Sandi**
-  (akun Google tanpa password → "Buat Kata Sandi") dengan indikator kekuatan · pilihan tema · **Logout** (dengan konfirmasi).
+  (akun Google tanpa password → "Buat Kata Sandi") dengan indikator kekuatan · **Logout** (dengan konfirmasi).
 - **Pesananku**: riwayat pesanan + filter (Semua / Menunggu / Berhasil / Gagal-Batal), status berwarna,
   aksi cepat: Lanjutkan Bayar, Lihat Status, Lihat Struk, Tanya Progres (WA), Pesan Lagi.
 
-## Light & Dark Mode
-Tombol bulan/matahari di navbar setiap halaman (login/register: tombol melayang kanan atas).
-Pilihan disimpan di `localStorage` (`lc_theme`); default mengikuti setelan perangkat; tanpa "kedip" saat load.
-File: `public/static/theme.css` (palet + override) dan `public/static/theme.js` (toggle).
+## Palet Warna (satu tema, tanpa dark mode)
+Mode gelap/terang dan tombol toggle sudah dihapus. Seluruh situs memakai 5 warna:
 
-Tema gelap **"Midnight Slate"** — dibangun dari 2 warna inti `#0B1329` (latar) & `#1E293B` (kartu),
-dengan satu aksen sky-blue agar kontras tetap nyaman dan tidak bertabrakan.
-
-| Token | Light (dasar) | Dark |
+| Warna | Hex | Peran |
 |---|---|---|
-| Primary | `#17517E` | `#60B5EE` (sky) |
-| Accent | `#2C83B8` | `#93D0F5` |
-| Background | `#F8FAFC` | `#0B1329` (midnight navy) |
-| Surface / kartu | `#FFFFFF` | `#1E293B` (slate) |
-| Surface 2 / input | `#F8FAFC` | `#131D33` |
-| Tint biru | `#F1F7FC` | `#1B3050` |
-| Text | `#0F172A` | `#E2E8F0` |
-| Muted | `#475569` | `#94A3B8` |
-| Border | `#E2E8F0` | `#2B3A52` |
-| Hero / CTA | `#17517E → #6FB4DD` | `#0B1329 → #1E293B → #1D5A8A` + glow sky |
-| Footer | `#17517E` | `#070D1F` + garis gradasi sky |
+| Ink | `#0F0F0F` | teks utama, tombol utama, hero, bagian harga, footer |
+| Lime | `#C7FF2E` | aksen: highlight, badge, CTA, ikon, hover, status berhasil |
+| Graphite | `#2E2E2E` | gradasi gelap, kartu di bagian gelap |
+| White | `#FFFFFF` | latar halaman & kartu |
+| Gray | `#808080` | garis, teks sekunder, elemen netral |
 
-Detail kreatif dark mode: cahaya radial lembut di latar, highlight kaca di tepi atas kartu,
-glow sky saat hover kartu, kilau pada kartu harga unggulan, scrollbar & seleksi teks senada.
+Aturan kontras: lime tidak dipakai sebagai teks di atas putih. Lime hanya jadi teks di atas ink/graphite,
+atau jadi latar dengan teks ink. Status (sukses/gagal/pending) dibedakan lewat kombinasi palet, bukan warna lain.
+
+File: token di `public/static/style.css` (`:root`) dan lapisan aksen di `public/static/palette.css`
+(dimuat terakhir di semua halaman).
+
+Elemen "hidup": pita berjalan (ticker) lime, headline hero dengan sorotan lime, kartu dengan bayangan offset lime
+saat hover, ikon yang berputar kecil saat hover, tombol dengan kilau, blob hero yang bergerak, bagian harga gelap
+dengan kartu unggulan berwarna lime, CTA berdenyut, footer dengan garis lime.
 
 ## Development lokal
 ```bash
@@ -121,8 +117,8 @@ pm2 start ecosystem.config.cjs   # http://localhost:3000
 - ✅ Diuji end-to-end memakai PostgreSQL 17 + PostgREST (stack yang sama dengan Supabase)
 - ✅ Tombol "Simulasikan Dana Masuk / Tidak Masuk" di step 3 pembayaran dihapus
 - ✅ Halaman profil tabbed (Profil Saya & Pesananku): edit profil, foto, ubah kata sandi, riwayat pesanan, logout
-- ✅ Light & dark mode di semua halaman
+- ✅ Palet 5 warna (#0F0F0F, #C7FF2E, #2E2E2E, #FFFFFF, #808080), dark mode dihapus
 - ⏳ Belum: dashboard admin, pembersihan sesi kedaluwarsa terjadwal (bisa pakai `pg_cron` di Supabase:
   `delete from sessions where expires_at < now();`)
 
-**Tech stack**: Hono + Cloudflare Pages + Supabase (REST/PostgREST) · **Last updated**: 2026-11-03
+**Tech stack**: Hono + Cloudflare Pages + Supabase (REST/PostgREST) · **Last updated**: 2026-11-19

@@ -300,17 +300,6 @@
   });
 
   /* ---------- Switch tema (sinkron dengan tombol navbar) ---------- */
-  const syncThemeSwitch = () => {
-    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    $$('[data-set-theme]').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.setTheme === cur)));
-  };
-  $$('[data-set-theme]').forEach((b) => b.addEventListener('click', () => {
-    if (window.LegalCraftTheme) window.LegalCraftTheme.set(b.dataset.setTheme);
-    syncThemeSwitch();
-  }));
-  window.addEventListener('themechange', syncThemeSwitch);
-  syncThemeSwitch();
-
   /* ---------- Logout ---------- */
   const logoutModal = $('#logout-modal');
   const setLogout = (open) => {

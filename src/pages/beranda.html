@@ -2,19 +2,18 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <script>(function(){try{var t=localStorage.getItem('lc_theme');if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LegalCraft — Legalitas Usaha, Lebih Mudah.</title>
   <meta name="description" content="LegalCraft membantu pengurusan NPWP, NIB, dan PT Perorangan secara praktis. Konsultasi langsung via WhatsApp." />
-  <meta name="theme-color" content="#17517E" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317517E'/><path d='M20 16h14l10 10v22H20z' fill='white'/><path d='M26 36l5 5 9-10' stroke='%2317517E' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+  <meta name="theme-color" content="#0F0F0F" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230F0F0F'/><path d='M20 16h14l10 10v22H20z' fill='%23C7FF2E'/><path d='M26 36l5 5 9-10' stroke='%230F0F0F' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
-  <link href="/static/style.css?v=8" rel="stylesheet" />
-  <link href="/static/theme.css?v=8" rel="stylesheet" />
+  <link href="/static/style.css?v=9" rel="stylesheet" />
+  <link href="/static/palette.css?v=9" rel="stylesheet" />
 </head>
 <body>
 
@@ -41,7 +40,6 @@
       </ul>
 
       <div class="nav-actions">
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ganti tema"></button>
         <a href="/login" class="btn btn-outline btn-sm nav-auth" id="nav-auth"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
         <button type="button" class="btn btn-primary btn-sm nav-cta" data-open-consult>Konsultasi</button>
         <button type="button" class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-menu">
@@ -63,7 +61,7 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <span class="eyebrow eyebrow-light"><i class="fa-solid fa-shield-halved"></i> Legalitas Usaha, Lebih Mudah.</span>
-          <h1 class="hero-title">Urus Legalitas Usaha, Jadi Lebih Mudah.</h1>
+          <h1 class="hero-title">Urus <span class="hl">Legalitas Usaha</span>, Jadi Lebih Mudah.</h1>
           <p class="hero-subtitle">
             Mulai dari NPWP, NIB, hingga PT Perorangan. LegalCraft membantu kamu memahami dan menjalani proses pengurusan legalitas usaha dengan lebih praktis.
           </p>
@@ -123,6 +121,10 @@
         </div>
       </div>
     </section>
+
+
+    <!-- ================= TICKER ================= -->
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span><i class="fa-solid fa-bolt"></i> NPWP</span><span><i class="fa-solid fa-bolt"></i> NIB</span><span><i class="fa-solid fa-bolt"></i> PT Perorangan</span><span><i class="fa-solid fa-bolt"></i> Harga Jelas</span><span><i class="fa-solid fa-bolt"></i> Proses Cepat</span><span><i class="fa-solid fa-bolt"></i> Bayar via BSI &amp; GoPay</span><span><i class="fa-solid fa-bolt"></i> Pendampingan WhatsApp</span><span><i class="fa-solid fa-bolt"></i> NPWP</span><span><i class="fa-solid fa-bolt"></i> NIB</span><span><i class="fa-solid fa-bolt"></i> PT Perorangan</span><span><i class="fa-solid fa-bolt"></i> Harga Jelas</span><span><i class="fa-solid fa-bolt"></i> Proses Cepat</span><span><i class="fa-solid fa-bolt"></i> Bayar via BSI &amp; GoPay</span><span><i class="fa-solid fa-bolt"></i> Pendampingan WhatsApp</span></div></div>
 
     <!-- ================= LAYANAN ================= -->
     <section class="section" id="layanan">
@@ -540,9 +542,8 @@
     </div>
   </div>
 
-  <script src="/static/app.js?v=8"></script>
+  <script src="/static/app.js?v=9"></script>
 
 
-  <script src="/static/theme.js?v=8"></script>
 </body>
 </html>

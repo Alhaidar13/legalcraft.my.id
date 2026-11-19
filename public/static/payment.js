@@ -314,7 +314,7 @@
   /* ---------- POPUP SUKSES ---------- */
   const confetti = () => {
     const box = $('#confetti'); box.innerHTML = '';
-    const colors = ['#00AED6', '#00AA13', '#F59E0B', '#EF4444', '#2C83B8', '#A855F7', '#FACC15'];
+    const colors = ['#C7FF2E', '#FFFFFF', '#808080', '#C7FF2E', '#2E2E2E', '#FFFFFF', '#C7FF2E'];
     for (let i = 0; i < 90; i++) {
       const p = document.createElement('i');
       p.style.left = Math.random() * 100 + '%';
